@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>トピック 一覧</h1>
+<%= link_to 'トピック新規作成', new_topic_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ユーザー</th>
+      <th>トピック</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <div class="row">
+        <tr>
+          <td><%= topic.user %></td>
+          <td class="content"><%= topic.content %></td>
+          <td><%= link_to '詳細', topic, class: 'btn btn-default btn-sm btn-success' %></td>
+          <td><%= link_to '編集', edit_topic_path(topic), class: 'btn btn-default btn-sm btn-success' %></td>
+          <td><%= link_to '削除', topic, method: :delete, data: { confirm: '本当にトピックを削除してよいですか？' }, class: 'btn btn-default btn-sm btn-danger' %></td>
+        </tr>
+      </div>
+    <% end %>
+  </tbody>
+</table>

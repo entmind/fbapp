@@ -1,0 +1,140 @@
+// Place all the styles related to the Top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+header {
+  width: 100%;
+  background-color: #3B5998;
+  height: 54px;
+}
+.main-header {
+  padding-bottom: 15%;
+  width: 100%;
+  background-size: cover;
+  background-image: url("images-master/header.jpg");
+  background-color: #E9EBEE;
+  background-attachment: fixed;
+}
+.main-header img {
+  display: block;
+  margin: 0 auto 0 auto;
+//  width: 100%;
+  padding-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.about {
+  background-color: white;
+  color: #333;
+  padding: 80px;
+}
+.function {
+  background-color: #e9e9e9;
+  padding: 80px;
+  padding-bottom: 185px;
+}
+.function-images {
+  width: 100%;
+  display: table;
+  margin-top: 60px;
+  table-layout: fixed;
+}
+.function-image {
+  display: table-cell;
+  width: 100%;
+}
+
+footer {
+  width: 100%;
+  background-color: #3B5998;
+  padding: 20px 0 10px 0;
+  color: white;
+  margin: auto;
+  padding-bottom: 10px;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+}
+
+.navbar-default {
+    border: 0;
+}
+.navbar {
+//    background-color: transparent;
+    background-color: #3B5998;
+    color: white;
+    margin-bottom: 0px;
+}
+.navbar-default {
+  .navbar-brand {
+    color: #ccc;
+    &:hover {
+      color: white;
+    }
+  }
+  .navbar-nav > li > a {
+    color: #ccc;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar-nav > .open > a {
+    background-color: transparent;
+    color: white;
+    &:hover, &:focus {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ccc;
+    text-align: center;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar-default .navbar-toggle {
+    background-color: transparent;
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  text-align: center;
+}
+
+a {
+  text-decoration: underline;
+  color: #000;
+
+  &:visited {
+    color: purple;
+  }
+
+  &:hover {
+    color: purple;
+    background-color: lime;
+  }
+}
+
+
+table, td, th {
+  border-collapse: collapse;
+  border:1px solid #E9EBEE;
+}
+
+table {
+  margin: 10px;
+  width: 100%;
+}
+td.content {
+  width: auto;
+}

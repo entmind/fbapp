@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>トピック 詳細</h1>
+
+<p>
+  <strong>User:</strong>
+  <%= @topic.user %>
+</p>
+
+<p>
+  <strong>トピック:</strong>
+  <%= @topic.content %>
+</p>
+
+<%= link_to '編集', edit_topic_path(@topic) %> |
+<%= link_to '戻る', topics_path %>
