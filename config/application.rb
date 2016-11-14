@@ -18,9 +18,14 @@ module Fbapp
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :ja
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    # 追記。エラーフォームのデータ崩れを回避。
+    config.action_view.field_error_proc = proc { |html_tag, _| html_tag }
+    # 追記。エラー「uninitialized constant User::AvatarUploader (NameError)」が出たので。
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+
   end
 end

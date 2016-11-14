@@ -1,0 +1,15 @@
+<h2>ユーザー一覧</h2>
+<% @users.each do |user| %>
+    <div class="container-child col-md-4 col-sm-4 col-xs-6 ">
+        <%= profile_img(user) %>
+        <%= user.name %>
+        <% if user.id != current_user.id %>
+            <div class="item">
+              <% if current_user.following?(user) && user.following?(current_user) %>
+                <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+              <% end %>
+            </div>
+            <%= render partial: 'follow_form', locals: { user: user } if signed_in? %>
+        <% end %>
+    </div>
+<% end %>
