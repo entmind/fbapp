@@ -78,12 +78,12 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # 新規追加したよ。
-  config.action_mailer.default_url_options = { host: '52.69.47.192' }
+  config.action_mailer.default_url_options = { host: '52.199.69.100' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    domain: "52.69.47.192",
+    domain: "52.199.69.100",
     address: "smtp.sendgrid.net",
     port: 587,
     authentication: :plain,
