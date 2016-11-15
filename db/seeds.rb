@@ -9,19 +9,31 @@
   email = Faker::Internet.email
 	name = Faker::Name.last_name
   password = "password"
+  uid = "#{n + 1}"
+  provider = "twitter"
   User.create!(email: email,
                name: name,
                password: password,
-               password_confirmation: password
+               password_confirmation: password,
+               uid: uid,
+               provider: provider
                )
 end
 
 10.times do |n|
-  content = Faker::Pokemon.content
-  Topic.create!(content: content)
+  content = Faker::Pokemon.name
+  user_id = "#{n + 1}"
+  Topic.create!(content: content,
+                user_id: user_id
+                )
 end
 
 10.times do |n|
-  comment = Faker::Pokemon.comment
-  Comment.create!(comment: comment)
+  content = Faker::Pokemon.location
+  user_id = "#{n + 1}"
+  topic_id = "#{n + 1}"
+  Comment.create!(content: content,
+                  user_id: user_id,
+                  topic_id: topic_id
+                  )
 end
