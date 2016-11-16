@@ -59,4 +59,8 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
+  # dive18で追記したよ。「つながっているユーザを取得する」
+  def friend
+    followers & followed_users
+  end
 end

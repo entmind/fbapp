@@ -11,8 +11,13 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @comment = @topic.comments.build
-    @comments = @topic.comments
+    if current_user.following?(@topic.user) && @topic.user.following?(current_user)
+      @comment = @topic.comments.build
+      @comments = @topic.comments
+    elsif @topic.user_id == current_user.id
+      @comment = @topic.comments.build
+      @comments = @topic.comments
+    end
   end
 
   # GET /topics/new
@@ -76,4 +81,5 @@ class TopicsController < ApplicationController
     def topic_params
       params.require(:topic).permit(:user_id, :content)
     end
+
 end

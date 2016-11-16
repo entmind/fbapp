@@ -1,7 +1,9 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
+  before_action :correct_user, only: [:index]
 
   def index
     @messages = @conversation.messages
@@ -21,7 +23,7 @@ class MessagesController < ApplicationController
       end
     end
 
-    @message = @conversation.messages.build
+      @message = @conversation.messages.build
   end
 
   def create
@@ -34,6 +36,10 @@ class MessagesController < ApplicationController
   private
     def message_params
       params.require(:message).permit(:body, :user_id)
+    end
+
+    def correct_user
+      redirect_to(root_url) unless @conversation.target_user(current_user).present?
     end
 
 end

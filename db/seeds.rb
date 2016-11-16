@@ -37,3 +37,21 @@ end
                   topic_id: topic_id
                   )
 end
+
+10.times do |n|
+  sender_id =  "#{n + 1}"
+  recipient_id = "#{n + 2}"
+  Conversation.create!(sender_id: sender_id,
+                recipient_id: recipient_id
+                )
+end
+
+10.times do |n|
+  body = Faker::Music.instrument
+  conversation_id = "#{n + 1}"
+  user_id = "#{n + 1}"
+  Message.create!(body: body,
+                conversation_id: conversation_id,
+                user_id: user_id
+                )
+end
