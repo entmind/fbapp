@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /topics
   # GET /topics.json
