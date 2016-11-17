@@ -18,6 +18,8 @@ class TopicsController < ApplicationController
     elsif @topic.user_id == current_user.id
       @comment = @topic.comments.build
       @comments = @topic.comments
+    else
+      redirect_to(root_url)
     end
   end
 
