@@ -10,8 +10,10 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching. falseに変更したよ。変更したらサーバー再起動。
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
+  #  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+  BetterErrors::Middleware.allow_ip! "192.168.179.4"
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :correct_user, only: [:create, :destroy]
+  before_action :correct_user3, only: [:create]
+  before_action :correct_user4, only: [:destroy]
   # コメントを保存、投稿するためのアクションです。
   def create
     # ログインユーザーに紐付けてインスタンス生成するためbuildメソッドを使用します。
@@ -23,7 +24,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    render :index
+    render action: 'index'
   end
 
   private
@@ -32,11 +33,13 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:topic_id, :content)
     end
 
-    def correct_user
-      if @topic.user_id == current_user.id
-        raise
-        render 'create'
-      else current_user.following?(@topic.user) && @topic.user.following?(current_user)
+    def correct_user3
+      unless current_user.friend
+        redirect_to(root_url)
+      end
+    end
+    def correct_user4
+      unless current_user.friend
         redirect_to(root_url)
       end
     end

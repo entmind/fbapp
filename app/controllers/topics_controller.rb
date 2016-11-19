@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit]
+  before_action :correct_user2, only: [:update]
 
   # GET /topics
   # GET /topics.json
@@ -86,9 +87,12 @@ class TopicsController < ApplicationController
     end
 
     def correct_user
-      if @topic.user_id == current_user.id
-        render 'edit'
-      else current_user.following?(@topic.user) && @topic.user.following?(current_user)
+      unless @topic.user_id == current_user.id
+        redirect_to(root_url)
+      end
+    end
+    def correct_user2
+      unless @topic.user_id == current_user.id
         redirect_to(root_url)
       end
     end
